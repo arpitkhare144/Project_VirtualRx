@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<style>
+            body {
+  margin: 0;
+  padding: 0;
+}
+
+.head{
+  margin-top: 0px;
+}
+
+
+
+.navigation-bar {
+  height: 60px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.navigation-bar ul {
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  float: left;
+}
+
+.navigation-bar li {
+  list-style-type: none;
+  padding: 5px 10px;
+  height: 24px;
+  display: inline;
+}
+
+.navigation-bar li button {
+  color: black;
+  font-size: 16px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  line-height: 26px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 15px;
+  background: #8BC0C1;
+  padding: 10px 16px;
+  min-width: 182px;
+  /*box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.13), 0px 6px 20px rgba(0,0,0,0.034);*/
+  box-shadow: 0px -6px 10px rgba(255, 255, 255, 1), 0px 6px 15px rgba(0, 0, 0, 0.15);
+
+}
+
+.navigation-bar li button:hover {
+  outline: none;
+  background: #98c7c8;
+
+}
+
+navigation-bar li button:active {
+  outline: none;
+  background: #98c7c8;
+  box-shadow: 0px -6px 10px rgba(255, 255, 255, 1), 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.navigation-bar li a {
+  color: black;
+  font-size: 16px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-decoration: none;
+]}
+
+.photo{
+    width: 75px;
+    height: 75px;
+    float: right;
+
+}
+.logo{
+    width: 277px;
+    height: 75px;
+    float: left;
+}
+
+.head2 h3{
+  float:right;
+  margin-right: 5px;
+}
+.head2 h4 {
+  padding-top: 50px;
+  margin-left: 1110px;
+}
+
+
+.lvul ul {
+  position: absolute;
+  top: 40px;
+  bottom: 20px;
+  left: 150px;
+  right: 150px;
+  overflow: scroll;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.13), 0px 6px 20px rgba(0,0,0,0.034);
+}
+
+.lvul li {
+    padding: 20px 20px;
+    /* border-bottom: 1px solid #ccc; */
+    box-shadow: 0px 2px 2px 0 rgb(0,0,0,0.034), 0px 4px 8px rgb(0,0,0,0.02);
+}
+
+.lvul li:last-child {
+  border-bottom: none;
+}
+.lvul .one{
+  background-color: #d5d5f6;
+  float:right;
+  margin-left:15px;
+  padding: 13px;
+  margin-top: -10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0px -6px 10px rgba(255, 255, 255, 1), 0px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.lvul .one:hover{
+  background-color: #e6e6fa;
+  float:right;
+  margin-left:15px;
+  padding: 13px;
+  margin-top: -10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0px -6px 10px rgba(255, 255, 255, 1), 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/*.two{
+  background-color: #0f0;
+  float:right;
+  margin-left:10px;
+  padding: 10px;
+  margin-top: -10px;
+  border: none;
+  cursor: pointer;
+}
+*/
+.lvul button2 {
+  background-color: #0f0;
+  float:right;
+  border-radius: 15px;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+        </style>
+        <title></title>
+		<script>
+			function goback(date,aadhar){
+    console.log(date)
+    // window.open('/listview&date='+date,'_self')
+    //
+    window.open('/pdfpatient/'+aadhar+'/'+date,'_blank')
+}
+		</script>
+    </head>
+	<body>
+
+<!--		<div class="head">-->
+<!--			<img src="/static/images/profile.jpg" class="photo" alt="">-->
+<!--			<img src="/static/images/cacweb1.png" class="logo" alt="">-->
+<!--			<div class="head2"><h3>Username</h3>-->
+<!--				<h4><a href="example.html">Logout</a></h4></div>-->
+<!--			</div>-->
+<!--			<div class="navigation-bar">-->
+<!--				<ul>-->
+<!--					<li><button><a href="http://127.0.0.1:5000/patientprofile/{{aadhar}}">Patient Profile</a></button></li>-->
+<!--					<li><button><a href="#">Patient Record</a></button></li>-->
+<!--					<li><button><a href="http://127.0.0.1:5000/drop/{{aadhar}}/{{doctor}}">New Prescription</a></button></li>-->
+
+<!--&lt;!&ndash;					<li><button><a href="#">New Prescription</a></button></li>&ndash;&gt;-->
+<!--				</ul>-->
+<!--            </div>-->
+
+        <div class="lvul">
+            <ul >
+                {% for date in datelist %}
+                <li>{{ date }}<button class="one" onclick="goback('{{ date }}','{{ aadhar }}')">View</button></li>
+                {% endfor %}
+           </ul>
+        </div>
+			</body>
+		</html>

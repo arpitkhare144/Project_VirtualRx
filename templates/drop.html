@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription</title>
+    <style>
+        /* Basic Style */
+body {
+  background: #fff;
+  color: #333;
+  font-family: Lato, sans-serif;
+}
+.container {
+  display: block;
+  width: 720px;
+  margin: 100px auto 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li * {
+  float: left;
+}
+li, h3 {
+  clear:both;
+  list-style:none;
+}
+input, button {
+  outline: none;
+}
+
+button:hover {
+  color: #333;
+}
+/* Heading */
+h3,
+label[for='new-task'] {
+
+  color: #333;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: 2px solid #333;
+  padding: 30px 0 10px;
+  margin: 0;
+  text-transform: uppercase;
+
+}
+input[type="text"] {
+  margin: 0;
+  font-size: 18px;
+  line-height: 18px;
+  height: 18px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  font-family: Lato, sans-serif;
+  color: #888;
+}
+input[type="text"]:focus {
+  color: #333;
+}
+
+/* New Task */
+label[for='new-task'] {
+  display: block;
+  margin: 0 0 20px;
+}
+input#new-task {
+  float: left;
+  width: 318px;
+}
+p > button:hover {
+  color: #0FC57C;
+}
+
+/* Task list */
+li {
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+li > input[type="checkbox"] {
+  margin: 0 10px;
+  position: relative;
+  top: 15px;
+  display: none;
+}
+li > label {
+  font-size: 18px;
+  line-height: 40px;
+  width: 570px;
+  padding: 0 0 0 11px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  color: darkslategray;
+}
+li >  input[type="text"] {
+  width: 226px;
+}
+li > .delete:hover {
+  color: #CF2323;
+}
+
+/* Completed */
+#completed-tasks label {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Edit Task */
+ul li input[type=text] {
+  display:none;
+}
+
+ul li.editMode input[type=text] {
+  display:block;
+}
+
+ul li.editMode label {
+  display:none;
+}
+.lol{
+ margin-left: 36px;
+
+}
+.abc{
+width: fit-content;
+color:grey;
+}
+
+
+.alig{
+margin-left: 36px;
+}
+.alig1{
+margin-left: 25px;
+}
+
+body{
+font-family: 'Roboto', sans-serif !important;
+}
+button {
+display: block;
+  margin-top: 29px !important;
+  background: none;
+  border: 0px;
+  color: #888;
+  font-size: 15px;
+  width: 60px;
+  font-family: Lato, sans-serif;
+  cursor: pointer;
+}
+.ary{
+  margin-left: 40px;
+}
+.ary2{
+  margin-left: 40px;
+}
+.ary3{
+  margin-left: 40px;
+}
+label{
+  margin-right: 16px;
+}
+.qwer1{
+  margin-left: 20px;
+}
+.qwer2{
+  margin-left: 45px;
+}
+.qwer3{
+  margin-left: 43px;
+}
+.md{
+margin-right: 28px;
+}
+.ed{
+margin-right: 31px;
+}
+h3{
+font-family: 'Playfair Display', serif !important;
+}
+img{
+width:240px;
+background-color: white;
+margin-left: 205px;
+margin-top: 50px;
+box-shadow: 1px 1px 4px 1px #33333312, 0 6px 20px 0 #007bff0a;
+border-radius: 5px;
+}
+.nav {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  }
+
+.aryan{
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(174, 174, 192, 0.2), 0 6px 20px 0 rgba(174, 174, 192, 0.2);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.btn-outline-success{
+  box-shadow: 0 4px 8px 0 rgba(40,167,69, 0.2), 0 6px 20px 0 rgba(40,167,69, 0.19);
+  text-align: center;
+}
+.btn-primary{
+box-shadow: 0 4px 8px 0 rgba(0,123,255, 0.2), 0 6px 20px 0 rgba(0,123,255, 0.19);
+  text-align: center;
+}
+
+/*.pres{
+  border-radius: 10px;
+margin-bottom: 16px;
+  box-shadow: 0 4px 8px 0 rgba(174, 174, 192, 0.2), 0 6px 20px 0 rgba(174, 174, 192, 0.2);
+}*/
+button.edit{
+display: none;
+}
+/*.set{
+
+    border: none;
+    color: white;
+    background-color: #203647;
+    padding: 2px;
+    box-shadow: 0 4px 8px 0 #49505769, 0 6px 20px 0 #49505700;
+    border-radius: 3px;
+}   */
+.set {
+    border: none;
+    color: black;
+    background-color: #ffffff;
+    padding: 5px;
+    box-shadow: 1px 1px 4px 1px #33333312, 0 6px 20px 0 #007bff0a;
+    border-radius: 7px;
+}
+label {
+    color: slategrey;
+}
+.pres{
+color:black !important;
+}
+button.delete {
+    margin-left: 44px;
+}
+.one1 {
+  margin-left: 37px;
+}
+
+
+textarea#datastore {
+  display: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+qty{
+margin-left: 20px;
+}
+
+input#browser {
+  width: 35%;
+}
+    </style>
+<!--    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dropStyle.css') }}">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<!--  <img src="/static/cacweb1.png" alt="asd">-->
+
+
+        <div class="container">
+            <div class="aryan">
+            <h3>Dr  {{dname}}</h3>
+            <br>
+<!--            <details>-->
+<!--  <summary>Patient Details</summary>-->
+<!--                <br>-->
+<!--                <table class="table">-->
+<!--  <tbody>-->
+<!--    <tr>-->
+<!--      <th scope="row">Name</th>-->
+<!--      <td>patient1</td>-->
+
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">Age</th>-->
+<!--      <td>20</td>-->
+
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">Blood Grp</th>-->
+<!--      <td>B +ve</td>-->
+
+<!--    </tr>-->
+<!--      <tr>-->
+<!--      <th scope="row">Weight</th>-->
+<!--      <td>60kg</td>-->
+
+<!--    </tr>-->
+
+<!--  </tbody>-->
+<!--</table>-->
+<!--                class="btn btn-info"-->
+<!--                <button type="button" class="btn btn-link abc">Patient Record</button>-->
+<!--                                       <button type="button" class="btn" >View Patients Record</button>-->
+
+<!--  <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>-->
+<!--</details>-->
+            <br>
+          <div class="one1">
+              <span>
+                  <label for="type1">Type  </label>
+  <select name="type1" class="set" id="type1">
+    <option value="Tablet">Tablet</option>
+    <option value="Syrup">Syrup</option>
+    <option value="Drop">Drop</option>
+    <option value="Ointment">Ointment</option>
+    <option value="Injectible">Injectible</option>
+  </select>
+              </span>
+              <span class="lol">
+            <label for="browser">Medicine  </label>  <input list="browsers" name="browser" id="browser" class="set" required>
+            <datalist  class="set" id="browsers" >
+              {% for x in medicine %}
+              <option value={{ x }}>
+                  {% endfor %}
+            </datalist>
+                  </span>
+              <span class="qty">
+                <label for="qty">Quantity</label>
+                <input type="number" class="set" name="qty" id="qty">
+                </span>
+
+          </div>
+            <br>
+<div class="alig">
+              <label class="md" for="dose">Morning Dose:</label>
+  <select name="dose" class="set" id="dose">
+    <option value="None">None</option>
+    <option value="Half">Half</option>
+    <option value="1">1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
+  </select>
+  <span class="ary3">
+                         <input type="radio" id="age1" name="11" value="Before Breakfast">
+  <label for="age1" class="set">Before Breakfast</label>
+  <span class="qwer1">
+  <input type="radio" id="age2" name="11" value="After Breakfast">
+  <label class="set" for="age2">After Breakfast</label>
+  </span>
+</span>
+    </div>
+            <div>
+              <label for="dose1"  class="lol" >Afternoon Dose:</label>
+  <select name="dose1" class="set" id="dose1">
+    <option value="None">None</option>
+    <option value="Half">Half</option>
+    <option value="1">1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
+  </select>
+  <span class="ary">
+               <input type="radio" id="age11" name="111" required value="Before Lunch">
+  <label class="set" for="age11">Before Lunch</label>
+  <span class="qwer2">
+  <input type="radio" id="age22" name="111" required value="After Lunch">
+  <label class="set" for="age22">After Lunch</label>
+  </span>
+</span>
+                </div>
+
+            <div>
+
+              <label   class="lol ed" for="dose2">Evening Dose:</label>
+  <select name="dose2" id="dose2" class="set">
+    <option value="None">None</option>
+    <option value="Half">Half</option>
+    <option value="1">1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
+  </select>
+  <span class="ary2">
+               <input type="radio" id="age111" name="1111" required value="Before Dinner">
+  <label class="set" for="age111">Before Dinner</label>
+  <span class="qwer3">
+  <input type="radio" id="age222" name="1111" required value="After Dinner">
+  <label class="set" for="age222">After Dinner</label>
+  </span><br>
+</span>
+                </div>
+            <br>
+<!--            <div>-->
+                              <button type="button" class="btn btn-primary" onclick="addTask()">Add</button>
+<!--                              <button type="button" class="btn" >View Patient Record</button>-->
+            </div>
+
+<!--            <hr>-->
+<div class="aryan">
+          <h3>Rx</h3>
+          <ul id="incomplete-tasks">
+          </ul>
+
+<!--          <h3>Completed</h3>-->
+           <form action="http://localhost:5000/{{adhar}}/{{dname}}" method="POST" name="tForm">
+<!--                <input type="text">-->
+                  <textarea name="notes" class="form-control" id="exampleFormControlTextarea1" rows="3">Notes...</textarea>
+                  <textarea name="data" class="form-control" id="datastore" rows="3">Notes...</textarea>
+                <br>
+                <input class="btn btn-primary"  onclick="dataP()" type="submit" value="Submit">
+
+           </form>
+        </div>
+               </div>
+</div>
+
+
+    <script type="text/javascript">
+    // Problem: User interaction doesn't provide desired results.
+// Solution: Add interactivity so the user can manage daily tasks
+var medL  = []
+
+{% for x in medicine %}
+              medL.push("{{ x }}")
+                  {% endfor %}
+console.log(medL)
+var taskInput = document.getElementById("new-task");
+var addButton = document.getElementsByTagName("button")[-1];
+var incompleteTasksHolder = document.getElementById("incomplete-tasks");
+var completedTasksHolder = document.getElementById("completed-tasks");
+
+//New Task List Item
+var createNewTaskElement = function(taskString) {
+  //Create List Item
+  var listItem = document.createElement("li");
+  listItem.className = "pres";
+
+  //input (checkbox)
+  var checkBox = document.createElement("input"); // checkbox
+  //label
+  var label = document.createElement("label");
+  //input (text)
+  var editInput = document.createElement("input"); // text
+  //button.edit
+  var editButton = document.createElement("button");
+  //button.delete
+  var deleteButton = document.createElement("button");
+
+      //Each element needs modifying
+
+  checkBox.type = "checkbox";
+  editInput.type = "text";
+
+  editButton.innerText = "Edit";
+  editButton.disabled = true;
+  editButton.className = "edit";
+  deleteButton.innerText = "Delete";
+  deleteButton.className = "delete";
+
+  label.innerText = taskString;
+
+
+      // each element needs appending
+  listItem.appendChild(checkBox);
+  listItem.appendChild(label);
+  listItem.appendChild(editInput);
+  listItem.appendChild(editButton);
+  listItem.appendChild(deleteButton);
+
+  return listItem;
+}
+
+// Add a new task
+var addTask = function() {
+  console.log("Add task...");
+  //Create a new list item with the text from #new-task:
+  var dose = document.querySelector('#dose').value
+  var dose1 = document.querySelector('#dose1').value
+  var dose2 = document.querySelector('#dose2').value
+  
+  if(document.getElementById('age1').checked) {   
+       var b1 = document.getElementById('age1').value;  
+}  
+else{
+  var b1 = "After Breakfast"
+}
+if(document.getElementById('age11').checked) {   
+       var b2 = document.getElementById('age11').value;  
+}  
+else{
+  var b2 = "After Lunch"
+}
+if(document.getElementById('age111').checked) {   
+       var b3 = document.getElementById('age111').value;  
+}  
+else{
+  var b3 = "After Dinner"
+}
+ var med = document.querySelector('#browser').value
+//  console.log(medL);
+var booln = medL.includes(med);
+if(booln == false){
+  alert("Medicine not in given Inventory");
+}
+else{
+ if(dose=="None"){
+   dose="";
+   b1=""
+ }
+ if(dose1=="None"){
+   dose1="";
+   b2=""
+ }
+ if(dose2=="None"){
+   dose2="";
+   b3=""
+ }
+  // var b2 = document.querySelector('#age11').value
+  // var b3 = document.querySelector('#age111').value
+ var listItem = createNewTaskElement(document.querySelector('#type1').value+" "
+  +med +"- Quantity: "+document.querySelector('#qty').value+"\n"+b1+"-"+dose+" \xa0\xa0\| "+b2+"-"+dose1+"\xa0\xa0\|  "+b3+"-"+dose2 );
+  //Append listItem to inc ompleteTasksHolder
+  if (med==""){ alert("No Medicine Selected");}
+  else{
+    incompleteTasksHolder.appendChild(listItem);
+  bindTaskEvents(listItem, taskCompleted);
+
+  }
+
+  taskInput.value = "";}
+}
+
+// Edit an existing task
+var editTask = function() {
+  console.log("Edit Task...");
+
+  var listItem = this.parentNode;
+
+  var editInput = listItem.querySelector("input[type=text]")
+  var label = listItem.querySelector("label");
+
+  var containsClass = listItem.classList.contains("editMode");
+    //if the class of the parent is .editMode
+  if(containsClass) {
+      //switch from .editMode
+      //Make label text become the input's value
+    label.innerText = editInput.value;
+  } else {
+      //Switch to .editMode
+      //input value becomes the label's text
+    editInput.value = label.innerText;
+  }
+
+    // Toggle .editMode on the parent
+  listItem.classList.toggle("editMode");
+
+}
+
+
+// Delete an existing task
+var deleteTask = function() {
+  console.log("Delete task...");
+  var listItem = this.parentNode;
+  var ul = listItem.parentNode;
+
+  //Remove the parent list item from the ul
+  ul.removeChild(listItem);
+}
+
+// Mark a task as complete
+var taskCompleted = function() {
+  console.log("Task complete...");
+  //Append the task list item to the #completed-tasks
+  var listItem = this.parentNode;
+  completedTasksHolder.appendChild(listItem);
+  bindTaskEvents(listItem, taskIncomplete);
+}
+
+// Mark a task as incomplete
+var taskIncomplete = function() {
+  console.log("Task Incomplete...");
+  // When checkbox is unchecked
+  // Append the task list item #incomplete-tasks
+  var listItem = this.parentNode;
+  incompleteTasksHolder.appendChild(listItem);
+  bindTaskEvents(listItem, taskCompleted);
+}
+
+var bindTaskEvents = function(taskListItem, checkBoxEventHandler) {
+  console.log("Bind list item events");
+  //select taskListItem's children
+  var checkBox = taskListItem.querySelector("input[type=checkbox]");
+  var editButton = taskListItem.querySelector("button.edit");
+  var deleteButton = taskListItem.querySelector("button.delete");
+
+  //bind editTask to edit button
+  editButton.onclick = editTask;
+
+  //bind deleteTask to delete button
+  deleteButton.onclick = deleteTask;
+
+  //bind checkBoxEventHandler to checkbox
+  checkBox.onchange = checkBoxEventHandler;
+}
+
+var ajaxRequest = function() {
+  console.log("AJAX Request");
+}
+
+var dataP = function(){
+
+// const fs = require('fs');
+// let fileContent = 'I can write';
+// fs.writeFileSync('message.txt', fileContent);
+
+var x = document.getElementsByClassName("pres");
+var i;
+var res ="";
+for (i = 0; i < x.length; i++) {
+  console.log(x[i].innerText);
+  res = res.concat(x[i].innerText)
+}
+// var dl = document.createElement("textarea");
+// dl.name("data")
+// dl.innerText(res);
+// dl.innerHTML(res);
+// dl.value(res);
+// var fr  = document.getElementsByName("tForm");
+// fr.append(dl);
+var ele =  document.getElementById("datastore");
+ele.innerHTML = res;
+// document.tForm.submit();
+// const fs = require('fs');
+// let fileContent = res;
+// fs.writeFileSync('message.txt', fileContent);
+}
+// Set the click handler to the addTask function
+// <!--addButton.onclick = addTask;-->
+addButton.addEventListener("click", addTask);
+addButton.addEventListener("click", ajaxRequest);
+
+
+// Cycle over the incompleteTaskHolder ul list items
+for(var i = 0; i <  incompleteTasksHolder.children.length; i++) {
+    // bind events to list item's children (taskCompleted)
+  bindTaskEvents(incompleteTasksHolder.children[i], taskCompleted);
+}
+// Cycle over the completeTaskHolder ul list items
+for(var i = 0; i <  completedTasksHolder.children.length; i++) {
+    // bind events to list item's children (taskIncompleted)
+  bindTaskEvents(completedTasksHolder.children[i], taskIncomplete);
+
+}
+
+    </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

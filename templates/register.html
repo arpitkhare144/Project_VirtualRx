@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Patient details</title>
+    <style>
+        		.uname{
+font-size: 25px;
+  font-weight: bold;
+  color: #98c7c8;
+}
+.logoutbutton{
+height:40px;
+width:150px;
+ color: orange;
+border-radius:10px;
+ border-color: #ff9800;
+
+}
+.logoutbutton:hover{
+ background: #ff9800;
+  color: white;
+}
+    </style>
+    <script >
+        var pName,aadhar,opd,weight,age;
+
+var pData,pData2,pData2Enc;
+pData = {}
+
+
+function getInput() {
+    pName = document.getElementById("pName").value;
+    aadhar = document.getElementById("aadhar").value;
+    opd = document.getElementById("opd").value;
+    weight = document.getElementById("weight").value;
+    age = document.getElementById("age").value;
+    console.log("Patient",pName);
+    console.log("Age",age);
+    console.log("Aadhar",aadhar);
+    console.log("OPD",opd);
+    console.log("Weight",weight);
+    pData = {"pName":pName,"age":age,"aadhar":aadhar,"opd":opd,"weight":weight};
+    pData2 = JSON.stringify(pData);
+    pData2Enc = btoa(pData2);
+    console.log(pData);
+    console.log(typeof(pData2));
+    console.log(pData2);
+    console.log(pData2Enc);
+    window.open("/register?monitor=2&data="+pData2Enc,'_self');
+    if(aadhar.length != 12){
+      alert("Enter Valid Aadhar Number");
+    }
+}
+
+function monitor() {
+    pName = document.getElementById("pName").value;
+    aadhar = document.getElementById("aadhar").value;
+    opd = document.getElementById("opd").value;
+    weight = document.getElementById("weight").value;
+    age = document.getElementById("age").value;
+    pData = {"pName":pName,"age":age,"aadhar":aadhar,"opd":opd,"weight":weight};
+    pData2 = JSON.stringify(pData);
+    pData2Enc = btoa(pData2);
+    console.log(pData);
+    console.log(typeof(pData2));
+    console.log(pData2);
+
+    window.open("/register?monitor=1&data="+pData2Enc,'_self');
+}
+
+function submit() {
+    pName = document.getElementById("pName").value;
+    aadhar = document.getElementById("aadhar").value;
+    opd = document.getElementById("opd").value;
+    weight = document.getElementById("weight").value;
+    age = document.getElementById("age").value;
+    rtemp = document.getElementById("roomTemp").value;
+    rhumd = document.getElementById("roomHumid").value;
+    PHR = document.getElementById("heartRate").value;
+    BOL = document.getElementById("bloodOxy").value;
+    btemp = document.getElementById("bodyTemp").value;
+    bweight = document.getElementById("weight").value;
+    pData = {"pName":pName,"age":age,"aadhar":aadhar,"opd":opd,"weight":weight};
+    pData2 = JSON.stringify(pData);
+    pData2Enc = btoa(pData2);
+    // window.open("/register?monitor=3&data="+pData2Enc,'_self');
+       console.log(pData);
+    console.log(typeof(pData2));
+    console.log(pData2);
+    if(aadhar.length != 12){
+      alert("Enter valid Aadhar Number!!");
+    }
+    else if(pName == ""){
+      alert("Enter Patient Name!!");
+    }
+    else if(opd == "0"){
+      alert("Enter OPD Number!!!");
+    }
+    else if(weight == "0"){
+      alert("Enter Patient's Weight!!!!");
+    }
+    else if(age == "0"){
+      alert("Enter Patient's Age!!!!");
+    }
+    else if(rtemp == "0"){
+      alert("Please Click Monitor Button to get Room Temprature Value.");
+    }
+    else if(rhumd == "0"){
+      alert("Please Click Monitor Button to get Room Humidity Value.");
+    }
+    else if(PHR == "0"){
+      alert("Please Click Monitor Button to get Patient's Heart Rate Value.");
+    }
+    else if(BOL == "0"){
+      alert("Please Click Monitor Button to get Patient's Blood Oxygen Level Value.");
+    }
+    else if(btemp == "0"){
+      alert("Please Click Monitor Button to get Body Temprature Value.");
+    }
+    else if(bweight == "0"){
+      alert("Please Click Monitor Button to get Patient's Weight Value.");
+    }
+    else{
+      window.open("/register?monitor=3&data="+pData2Enc,'_self');
+    }
+
+
+}
+
+
+    </script>
+    <link rel="stylesheet" href="../static/register.css">
+
+</head>
+<body >
+<div class="head">
+
+	<img  src={{pimgimg}} class="photo" alt="">
+	<img src="/static/1.png" class="logo" alt="" width="300px" align="left">
+	<div class="head2" align="right">
+	<div class="uname" >Hello, {{username}}</div>
+	<div class="uname2" >{{design}}</div>
+	<div class="uname3" >{{degree}}</div>
+	<!-- </div>
+	<div class="head3"> -->
+        <a href="http://127.0.0.1:5000//loginreceptionist" target = "_self"><button class="logoutbutton">LOGOUT</button></a>
+	</div>
+
+    <div>
+    <p class="o1">Patients Details Form</p>
+    </div>
+    <div class="form">
+      <div >
+        <div class="o2">
+          <div class="o4">
+          Patient Name  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:<input type="text" name="PName" class="PName" id="pName" value="{{pName}}"></div>
+          <div class="o5">Age  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:<input type="text" name="age" id="age" value="{{age}}" maxlength="3" size="3">&nbspyrs</div>
+        </div>
+        <div class="o2">
+          <div class ="o4">Aadhar CardNumber : <input type="text" name="PName" id="aadhar" value="{{aadhar}}"></div>
+          <div class ="o5">OPD  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:<input type="text" name="age" id="opd" value="{{opd}}" maxlength="4" size="4"></div>
+        </div>
+        <div class="o2">
+          <div class="o4">Room temperature  &nbsp&nbsp&nbsp&nbsp:<input type="text" name="PName" id="roomTemp" value="{{roomTemp}}" maxlength="9" size="9"> &#x2103</div>
+          <div class="o5">Room Humidity  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:<input type="text" name="age" id="roomHumid" value="{{roomHumid}}" maxlength="9" size="9"> %</div>
+        </div>
+        <div class="o2">
+          <div class="o4">Patient Heart rate  &nbsp&nbsp&nbsp&nbsp&nbsp:<input type="text" name="PName" id="heartRate" value="{{heartRate}}" maxlength="9" size="9"> BPM</div>
+          <div class="o5">Blood Oxygen Level  &nbsp&nbsp:<input type="text" name="age" id="bloodOxy" value="{{bloodOxy}}" maxlength="9" size="9"> %</div>
+        </div>
+        <div class="o3">
+          <div class="o4">Body Temperature  &nbsp&nbsp&nbsp:<input type="text" name="PName" id="bodyTemp" value="{{bodyTemp}}" maxlength="9" size="9"> &#x2103</div>
+          <div class="o5">Body Weight  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:<input type="text" name="age" id="weight" value="{{weight}}" maxlength="9" size="9"> Kg</div>
+        </div>
+
+      </div>
+      <!-- <br><br><br><a href="register.html"class="button1">SUBMIT</a> -->
+      <!-- <br><br><br><input type="submit" name=""> -->
+      <!-- <br><br><br><button>SUBMIT</button> -->
+    </div>
+    <div>
+    <br><br><br><button class="button1" id="monitor_button" onclick="monitor()">MONITOR</button>
+    <button class="button3" id="save_button" onclick="getInput()">SAVE</button>
+    <button class="button2" id="submit_button" onclick="submit()">SUBMIT</button>
+  </div>
+
+</body>
+</html>
