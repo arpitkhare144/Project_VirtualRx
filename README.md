@@ -9,7 +9,8 @@ VirtualRx is an online platform where with the minimum no. of staff, the basic p
 ### Hardware Components :- 
                             DHT11 temperature sensor, ESP32 board, DS18B20 sensor and MAX30100 sensor
 ![Level 0 DFD](https://github.com/arpitkhare144/Project_VirtualRx/blob/main/DFDDiagram%20level%200.jpg?raw=true)
-
+##                                      LEVEL 0 DFD
 ![Level 1 DFD](https://github.com/arpitkhare144/Project_VirtualRx/blob/main/DFDDiagram%20level%201.jpg?raw=true)
 
+##                                      LEVEL 1 DFD
 
